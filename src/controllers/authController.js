@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { v4: uuidv4 } = require("uuid");
 const pool = require("../db");
 
 const secretKey = process.env.SECRET_KEY;
@@ -22,10 +23,10 @@ exports.registerUser = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-
+    const id = uuidv4();
     const result = await pool.query(
-      "INSERT INTO users (email, password) VALUES ($1, $2) RETURNING id",
-      [email, hashedPassword]
+      "INSERT INTO users (uuid, email, password) VALUES ($1, $2, $3) RETURNING id",
+      [id, email, hashedPassword]
     );
     const userId = result.rows[0].id;
 
@@ -78,7 +79,7 @@ exports.loginUser = async (req, res) => {
     res.status(200).json({
       success: true,
       data: {
-        id: user.id,
+        id: user.uuid,
         accessToken,
         refreshToken,
       },

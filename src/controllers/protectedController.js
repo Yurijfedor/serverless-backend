@@ -5,7 +5,7 @@ exports.getProtectedUser = async (req, res) => {
 
   try {
     const result = await pool.query(
-      "SELECT id, email FROM users WHERE id = $1",
+      "SELECT uuid, email FROM users WHERE id = $1",
       [userId]
     );
 
@@ -16,7 +16,7 @@ exports.getProtectedUser = async (req, res) => {
       });
     }
     const userData = {
-      id: result.rows[0].id,
+      id: result.rows[0].uuid,
       email: result.rows[0].email,
     };
 
