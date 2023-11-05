@@ -2,12 +2,25 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require("uuid");
 const pool = require("../db");
+const validation = require("../helpers/validation");
 
 const secretKey = process.env.SECRET_KEY;
 const refreshSecretKey = process.env.REFRESH_SECRET_KEY;
 
 exports.registerUser = async (req, res) => {
   const { email, password } = req.body;
+
+  if (!validation.isValidEmail(email)) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Некоректний email" });
+  }
+
+  if (!validation.isValidPassword(password)) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Пароль має бути не менше 6 символів" });
+  }
 
   try {
     const userExists = await pool.query(
