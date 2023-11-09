@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const pool = require("./src/db");
 const loadEnvVars = require("./src/helpers/loadEnvVars");
 loadEnvVars();
 

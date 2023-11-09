@@ -1,7 +1,4 @@
 const { Pool } = require("pg");
-const loadEnvVars = require("./helpers/loadEnvVars");
-
-loadEnvVars();
 
 const user = process.env.DB_USER;
 const host = process.env.DB_HOST;
@@ -13,7 +10,7 @@ const pool = new Pool({
   host,
   database,
   password,
-  port: 5432, 
+  port: 5432,
 });
 // Перевірка з'єднання з базою даних
 pool

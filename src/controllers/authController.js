@@ -38,8 +38,8 @@ exports.registerUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const id = uuidv4();
     const result = await pool.query(
-      "INSERT INTO users (uuid, email, password) VALUES ($1, $2, $3) RETURNING id",
-      [id, email, hashedPassword]
+      "INSERT INTO users ( email, password, uuid) VALUES ($1, $2, $3) RETURNING id",
+      [email, hashedPassword, id]
     );
     const userId = result.rows[0].id;
 
