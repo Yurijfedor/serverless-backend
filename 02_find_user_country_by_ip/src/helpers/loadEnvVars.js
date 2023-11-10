@@ -23,20 +23,12 @@ const loadEnvVars = () => {
     });
 
     if (
-      !process.env.DB_USER ||
-      process.env.DB_USER.trim() === "" ||
-      !process.env.DB_HOST ||
-      process.env.DB_HOST.trim() === "" ||
-      !process.env.DB_DATABASE ||
-      process.env.DB_DATABASE.trim() === "" ||
-      !process.env.DB_PASSWORD ||
-      process.env.DB_PASSWORD.trim() === "" ||
       !process.env.PORT ||
       process.env.PORT.trim() === "" ||
-      !process.env.SECRET_KEY ||
-      process.env.SECRET_KEY.trim() === "" ||
-      !process.env.REFRESH_SECRET_KEY ||
-      process.env.REFRESH_SECRET_KEY.trim() === ""
+      !process.env.YOUR_SUPABASE_URL ||
+      process.env.YOUR_SUPABASE_URL.trim() === "" ||
+      !process.env.YOUR_SUPABASE_KEY ||
+      process.env.YOUR_SUPABASE_KEY.trim() === ""
     ) {
       console.error("Error: one or more constants is missing or empty in .env");
       process.exit(1);

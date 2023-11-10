@@ -1,21 +1,10 @@
-const { Pool } = require("pg");
+const { createClient } = require("@supabase/supabase-js");
+// const testConnection = require("./helpers/testConnection");
 
-const user = process.env.DB_USER;
-const host = process.env.DB_HOST;
-const database = process.env.DB_DATABASE;
-const password = process.env.DB_PASSWORD;
+const supabaseUrl = process.env.YOUR_SUPABASE_URL;
+const supabaseKey = process.env.YOUR_SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-const pool = new Pool({
-  user,
-  host,
-  database,
-  password,
-  port: 5432,
-});
-// Перевірка з'єднання з базою даних
-pool
-  .connect()
-  .then(() => console.log("Зєднання з базою даних успішно встановлено"))
-  .catch((err) => console.error("Помилка зєднання з базою даних", err));
+// testConnection();
 
-module.exports = pool;
+module.exports = supabase;
