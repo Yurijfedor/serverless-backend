@@ -7,4 +7,13 @@ const ipToNumber = (ip) => {
   return ipl >>> 0;
 };
 
-module.exports = ipToNumber;
+const numberToIp = (number) =>
+  (number >>> 24) +
+  "." +
+  ((number >> 16) & 255) +
+  "." +
+  ((number >> 8) & 255) +
+  "." +
+  (number & 255);
+
+module.exports = { ipToNumber, numberToIp };

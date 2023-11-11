@@ -1,10 +1,7 @@
 const express = require("express");
 const app = express();
-const loadEnvVars = require("./src/helpers/loadEnvVars");
 
-loadEnvVars();
-
-const PORT = process.env.PORT || 3000;
+const PORT = 5000;
 
 app.use(
   "/locate",

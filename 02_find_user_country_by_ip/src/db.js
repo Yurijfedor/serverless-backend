@@ -1,10 +1,8 @@
 const { createClient } = require("@supabase/supabase-js");
-// const testConnection = require("./helpers/testConnection");
 
-const supabaseUrl = process.env.YOUR_SUPABASE_URL;
-const supabaseKey = process.env.YOUR_SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+const publicSupabaseUrl = "https://gigbnqpcjwgghpfdqonj.supabase.co";
+const publicSupabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdpZ2JucXBjandnZ2hwZmRxb25qIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTk1OTIwNjMsImV4cCI6MjAxNTE2ODA2M30.k5oMkgJgjBi4KCbiw-0zRKfhFPr-zdUGXMXEAjX2Qec";
+const supabase = createClient(publicSupabaseUrl, publicSupabaseKey);
 
-// testConnection();
 
 module.exports = supabase;
