@@ -29,7 +29,7 @@ exports.getOriginalUrl = async (req, res) => {
 
   try {
     const result = await pool.query(
-      "SELECT originalLink FROM links WHERE shortLink LIKE $1",
+      "SELECT originallink FROM links WHERE shortLink LIKE $1",
       [`%${shortId}`]
     );
 
