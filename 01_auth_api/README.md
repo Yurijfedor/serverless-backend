@@ -39,6 +39,11 @@ Before you begin, ensure you have met the following requirements:
 - Sign in using credentials by making a POST request to /auth/sign-in.
 - Access protected routes by including the Authorization header with a valid access token:
   Authorization: Bearer <access_token>
+- Find the country associated with the user's IP address using a supabase client making a GET request to /locate.
+- Storing and retrieving users JSON data to the postgresSQL database making a PUT and GET request to /me/title_of_data and providing a valid access token:
+  Authorization: Bearer <access_token>
+- Shorten long URLs making a POST request to /shorten and providing in request body an original link.
+- Retrieving an original url by making a GET request to /:shortId
 
 ## Acknowledgments
 
@@ -47,3 +52,5 @@ Before you begin, ensure you have met the following requirements:
 - Docker
 - bcrypt
 - jsonwebtoken
+- @supabase/supabase-js
+- uuid

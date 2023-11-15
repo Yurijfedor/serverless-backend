@@ -25,7 +25,7 @@ const authenticateUser = (req, res, next) => {
         .json({ success: false, message: "Невалідний токен доступу" });
     }
 
-    req.user = { userId: decoded.userId };
+    req.user = { userId: decoded.userId, userUuid: decoded.userUuid };
     next();
   });
 };

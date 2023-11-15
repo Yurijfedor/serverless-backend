@@ -5,3 +5,14 @@ CREATE TABLE users (
   uuid UUID NOT NULL
 );
 
+CREATE TABLE json_data (
+  name TEXT NOT NULL PRIMARY KEY,
+  userId UUID NOT NULL,
+  data JSONB NOT NULL
+);
+
+CREATE TABLE links (
+    id SERIAL PRIMARY KEY,
+    originallink TEXT,
+    shortLink TEXT
+);

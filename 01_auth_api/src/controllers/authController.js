@@ -84,9 +84,13 @@ exports.loginUser = async (req, res) => {
       return res.status(404).json({ success: false, error: "Невірний пароль" });
     }
 
-    const accessToken = jwt.sign({ userId: user.id }, secretKey, {
-      expiresIn: "60m",
-    });
+    const accessToken = jwt.sign(
+      { userId: user.id, userUuid: user.uuid },
+      secretKey,
+      {
+        expiresIn: "60m",
+      }
+    );
     const refreshToken = jwt.sign({ userId: user.id }, refreshSecretKey);
 
     res.status(200).json({
